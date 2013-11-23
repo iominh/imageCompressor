@@ -5,11 +5,11 @@
 
 function processFiles()
 {
-	echo $0
+	echo "Processing directory $1"
 	FILES=$1/*.jpg
 	for f in $FILES
 	do
-		echo $f
+		echo "Compressing $f"
 		convert $f -thumbnail 800x -strip -interlace line -quality 90 $f
 	done
 }
@@ -20,7 +20,7 @@ then
 	echo "Compresses all jpg images in a directory."
 	echo "Usage: ./process.sh <directory to process>"
 else
-	processFiles
+	processFiles $1
 fi
 
 
